@@ -49,21 +49,19 @@
                         </div>
                         <div class="row gx-5 justify-content-center">
                             <div class="col-lg-8 col-xl-6">
-                                <form id="loginForm" data-sb-form-api-token="API_TOKEN">
+                                <form id="loginForm" onsubmit="event.preventDefault();">
                                     <!-- email-->
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" id="email" type="email" required placeholder="E-mail" data-sb-validations="required,email" />
+                                        <input class="form-control" id="email" type="email" required placeholder="E-mail" />
                                         <label for="email">E-mail</label>
-                                        <div class="invalid-feedback" data-sb-feedback="email:required">É necessário digitar o E-mail.</div>
-                                        <div class="invalid-feedback" data-sb-feedback="email:email">E-mail inválido.</div>
                                     </div>
-                                    <!-- Campo de email-->
+                                    <!-- senha-->
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" id="senha" type="password" required placeholder="Digite sua Senha..." data-sb-validations="required" />
+                                        <input class="form-control" id="senha" type="password" required placeholder="Digite sua Senha..." />
                                         <label for="name">Senha</label>
                                     </div>
                                     <!-- Submit Button-->
-                                    <div class="d-grid mb-3"><button class="btn btn-primary btn-lg" id="entrar" type="button">Entrar</button></div>
+                                    <div class="d-grid mb-3"><button class="btn btn-primary btn-lg" id="entrar" type="submit">Entrar</button></div>
 
                                     <div class="form-check">
                                         <input type="checkbox" id="lembreDeMim" class="form-check-input">

@@ -16,7 +16,7 @@ var usuarios = [
     }
   ];
   
-  $('#entrar').on('click', event => {
+  $('#loginForm').on('submit', event => {
     if(!JSON.parse(localStorage.getItem("usuarios")))
         localStorage.setItem("usuarios", JSON.stringify(usuarios));
 
