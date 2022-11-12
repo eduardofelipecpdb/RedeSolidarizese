@@ -23,6 +23,7 @@ var usuarios = [
     var loggado = Login();
     if (loggado) {
         localStorage.setItem("lembrarDeMim", $('#lembreDeMim').is(':checked'));
+        alert("Autenticado com sucesso");
         window.location.href = "../index.html";
     }
     else alert("Login ou senha incorretos");
@@ -30,10 +31,9 @@ var usuarios = [
 
 function Login() {
     var email = $('#email').val();
-    var senha = $('#senha').val();
+    var senha = $('#senha').val().toString();
     
     for (var usuario of JSON.parse(localStorage.getItem("usuarios"))) {
-        console.log(usuario);
       if (email == usuario.Email && senha == usuario.Senha)
       {
         var dadosUsuarioAutenticado = {
@@ -43,6 +43,6 @@ function Login() {
         localStorage.setItem("userData", JSON.stringify(dadosUsuarioAutenticado));
         return true;
       }
-      return false;
     }
+    return false;
   };
