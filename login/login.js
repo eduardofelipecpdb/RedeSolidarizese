@@ -23,8 +23,21 @@ var usuarios = [
     var loggado = Login();
     if (loggado) {
         localStorage.setItem("lembrarDeMim", $('#lembreDeMim').is(':checked'));
-        alert("Autenticado com sucesso");
-        window.location.href = "../index.html";
+        // alert("Autenticado com sucesso");
+        switch(loggado) {
+          case 1:
+            window.location.href = "../index.html";
+            break;
+          case 2:
+            window.location.href = "../index.html";
+            break;
+          case 3:
+            window.location.href = "../ong/homeOng.html";
+            break;
+          default:
+            window.location.href = "ong/homeOng.html";
+            break;
+        }
     }
     else alert("Login ou senha incorretos");
 });
@@ -41,8 +54,8 @@ function Login() {
             "Tipo": usuario.Tipo
         }
         localStorage.setItem("userData", JSON.stringify(dadosUsuarioAutenticado));
-        return true;
+        return usuario.Tipo;
       }
     }
-    return false;
+    return undefined;
   };
