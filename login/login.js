@@ -29,7 +29,7 @@ var usuarios = [
             window.location.href = "../index.html";
             break;
           case 2:
-            window.location.href = "../index.html";
+            window.location.href = "../parceiro/homeParceiro.html";
             break;
           case 3:
             window.location.href = "../ong/homeOng.html";

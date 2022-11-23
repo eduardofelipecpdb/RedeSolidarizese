@@ -11,6 +11,8 @@ $("#cadastroItem").on("submit", (event) => {
     dadosItem = {
       EmailOng: dadosOng.Email,
       Nome: $("#nome").val(),
+      NomeOng: getUserName(dadosOng.Email),
+      Data: new Date().toLocaleDateString(),
       Qtd: $("#infinito").is(":checked") || !$("#qtd").val() ? 0 : $("#qtd").val(),
       Descricao: $("#descricao").val(),
     };
