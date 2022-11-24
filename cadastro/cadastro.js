@@ -53,6 +53,7 @@ function cadastrar(tipoUsuario, dados) {
     gravaDadosUsuario(email, tipoUsuario, dados);
 
     alert("Cadastro realizado com sucesso");
+    window.location.href = "../login/login.html";
 }
 
 function gravaDadosUsuario(email, tipoUsuario, dados) {

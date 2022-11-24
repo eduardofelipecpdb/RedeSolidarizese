@@ -42,6 +42,12 @@ function PopulaOngs () {
 }
 
 function PopularItens (emailOng) {
+  $('#item')
+    .find('option')
+    .remove()
+    .end()
+    .append(new Option("Selecione o item", 0));
+
     var itens = JSON.parse(localStorage.getItem("itensDoacao"));
     const itensOng = itens.filter(v => v.EmailOng === emailOng);
 
