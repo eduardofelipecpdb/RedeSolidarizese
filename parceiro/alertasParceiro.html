@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Itens cadastrados</title>
+        <title>Alertas para ongs</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
         <!-- Bootstrap icons-->
@@ -19,7 +19,7 @@
             <!-- Navigation-->
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container px-5">
-                    <a class="navbar-brand" href="homeOng.html">Rede Solidarize-se</a>
+                    <a class="navbar-brand" href="homeParceiro.html">Rede Solidarize-se</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -35,48 +35,54 @@
                 <div class="container px-5">
                     <div class="row gx-5">
                         <div class="col-lg-6 mb-3">
-                            <h2 class="fw-bolder fs-5 mb-4">Seus itens solicitados</h2>
+                            <h2 class="fw-bolder fs-5 mb-4">Seus alertas emitidos</h2>
                         </div>
                         <div class="col-lg-6 mb-3" >
-                            <a class="btn btn-lg btn-primary" style="float: right" href="cadastroItem.html">Cadastrar item</a>
+                            <a class="btn btn-lg btn-primary" style="float: right" href="cadastroAlerta.html">Enviar alerta</a>
                         </div>
                     </div>
                     <div id="container" class="row gx-5">
                         <script>
                             $(window).ready(function () {
-                                console.log("Brabo");
-                                var itens = JSON.parse(localStorage.getItem("itensDoacao"));
+                                var itens = JSON.parse(localStorage.getItem("alertas"));
+
+                                var usuarioLogado = JSON.parse(localStorage.getItem("userData"));
+                                var detalhesUsuario = JSON.parse(localStorage.getItem("dadosUsuarios"));
+                                var dados = detalhesUsuario.filter(v => v.Email === usuarioLogado.Email);
 
                                 if (!itens) {
-                                    console.log("Nada por aqui");
                                     $("#container").append("<div class=\"col-lg-4 mb-5 mt-5 \"></div><div class=\"col-lg-4 mb-5 mt-5 \"><h5 >Não há nada cadastrado ainda</h5></div><div class=\"col-lg-4 mb-5 mt-5 \"></div>")
                                 }
                                 else {
                                     console.table(itens);
                                     for (var item of itens) {
-                                        var textoQtd = item.Qtd == 0 ? "Quantos forem possíveis" : item.Qtd;
-                                        $("#container").append(
-                                        "<div class=\"col-lg-4 mb-5\">"+
-                                            "<div class=\"card h-100 shadow border-0\">"+
-                                                "<img class=\"card-img-top\" src=\"../assets/caixa-doacao.jpeg\" alt=\"...\" />"+
-                                                "<div class=\"card-body p-4\">"+
-                                                    "<a class=\"text-decoration-none link-dark stretched-link\" href=\"#!\"><div class=\"h5 card-title mb-3\">" + item.Nome + "</div></a>"+
-                                                    "<p class=\"card-text mb-3\">" + item.Descricao + "</p>"+
-                                                    "<p class=\"card-text\">Quantidade: " + textoQtd + "</p>"+
-                                                "</div>"+
-                                                "<div class=\"card-footer p-4 pt-0 bg-transparent border-top-0\">"+
-                                                    "<div class=\"d-flex align-items-end justify-content-between\">"+
-                                                        "<div class=\"d-flex align-items-center\">"+
-                                                            "<img class=\"rounded-circle me-3\" src=\"../assets/avatar40.jpg\" alt=\"...\" />"+
-                                                            "<div class=\"small\">"+
-                                                             "<div class=\"fw-bold\">"+ item.NomeOng +"</div>"+
-                                                                "<div class=\"text-muted\">" + item.Data + "</div>"+
+                                        if(item.EmailParceiro == usuarioLogado.Email) {
+                                            var textoQtd = item.Qtd == 0 ? "Quantos forem possíveis" : item.Qtd;
+                                            if(!dados.Nome) dados.Nome = "Desconhecido";
+                                            $("#container").append(
+                                            "<div class=\"col-lg-4 mb-5\">"+
+                                                "<div class=\"card h-100 shadow border-0\">"+
+                                                    "<img class=\"card-img-top\" src=\"../assets/caixa-doacao.jpeg\" alt=\"...\" />"+
+                                                    "<div class=\"card-body p-4\">"+
+                                                        "<a class=\"text-decoration-none link-dark stretched-link\" href=\"#!\"><div class=\"h5 card-title mb-3\">" + item.Titulo + "</div></a>"+
+                                                        "<p class=\"card-text mb-3\">Ong: " + item.EmailOng + "</p>"+
+                                                        "<p class=\"card-text mb-3\">" + item.Descricao + "</p>"+
+                                                        "<p class=\"card-text\">Quantidade: " + textoQtd + "</p>"+
+                                                    "</div>"+
+                                                    "<div class=\"card-footer p-4 pt-0 bg-transparent border-top-0\">"+
+                                                        "<div class=\"d-flex align-items-end justify-content-between\">"+
+                                                            "<div class=\"d-flex align-items-center\">"+
+                                                                "<img class=\"rounded-circle me-3\" src=\"../assets/avatar40.jpg\" alt=\"...\" />"+
+                                                                "<div class=\"small\">"+
+                                                                "<div class=\"fw-bold\">"+ dados.Nome +"</div>"+
+                                                                    "<div class=\"text-muted\">" + item.Data + "</div>"+
+                                                                "</div>"+
                                                             "</div>"+
                                                         "</div>"+
                                                     "</div>"+
                                                 "</div>"+
-                                            "</div>"+
-                                        "</div>");
+                                            "</div>");
+                                        }
                                     }
                                 }
                             });

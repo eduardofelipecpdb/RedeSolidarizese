@@ -33,15 +33,6 @@ function Cadastrar(dadosItem) {
     itens.push(dadosItem);
   }
   localStorage.setItem("itensDoacao", JSON.stringify(itens));
-  SucessoERedirect();
+  SucessoERedirect("Item cadastrado com sucesso");
 }
 
-function ErroERedirect(msg) {
-  alert(msg);
-  window.location.href = "../index.html";
-}
-
-function SucessoERedirect() {
-  alert("Item cadastrado com sucesso");
-  window.location.href = "itensCadastrados.html";
-}
