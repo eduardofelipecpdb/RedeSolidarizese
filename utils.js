@@ -15,3 +15,7 @@ function SucessoERedirect(msg) {
     alert(msg);
     window.location.href = "itensCadastrados.html";
 }
+
+$('#sair').on('click', function() {
+    localStorage.removeItem('userData');
+});
