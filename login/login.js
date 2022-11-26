@@ -26,7 +26,7 @@ var usuarios = [
         // alert("Autenticado com sucesso");
         switch(loggado) {
           case 1:
-            window.location.href = "../index.html";
+            window.location.href = "../doador/homeDoador.html";
             break;
           case 2:
             window.location.href = "../parceiro/homeParceiro.html";
