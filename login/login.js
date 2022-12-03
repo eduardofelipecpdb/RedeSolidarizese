@@ -42,6 +42,10 @@ var usuarios = [
     else alert("Login ou senha incorretos");
 });
 
+$('#esqueci').on('click', event => {
+  alert("Infelizmente essa funcionalidade ainda não foi implementada");
+});
+
 function Login() {
     var email = $('#email').val();
     var senha = $('#senha').val().toString();

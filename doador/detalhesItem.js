@@ -14,7 +14,7 @@ function PreencheDados (id) {
     $("#nomeOng").text(item.NomeOng);
     $("#emailOng").text(item.EmailOng);
     $("#descricao").text(item.Descricao);
-    $("#qtd").text(item.Qtd);
+    $("#qtd").text(item.Qtd == 0 ? "Indeterminada" : item.Qtd);
 }
 
 function BuscarParceiros() {
